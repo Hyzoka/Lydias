@@ -3,6 +3,7 @@ plugins {
     alias(libs.plugins.kotlin.android)
     id("org.jetbrains.kotlin.kapt")
     alias(libs.plugins.hilt.android)
+    alias(libs.plugins.kotlin.compose)
 
 }
 
@@ -33,10 +34,13 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    buildFeatures {
+        compose = true
+    }
 }
 
 dependencies {
-    implementation(project(":domain"))
+    implementation(project(":feature:contact_list"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)

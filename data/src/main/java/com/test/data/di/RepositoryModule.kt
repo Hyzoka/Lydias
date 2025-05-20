@@ -1,7 +1,7 @@
 package com.test.data.di
 
 import com.test.data.repo.ContactRepositoryImpl
-import com.test.domain.ContactRepository
+import com.test.domain.repo.ContactRepository
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn

@@ -1,22 +1,41 @@
 package com.test.data.di
 
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import com.test.data.remote.RandomUserApi
-import okhttp3.OkHttpClient
+import dagger.Module
+import dagger.Provides
+import dagger.hilt.InstallIn
+import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import retrofit2.converter.moshi.MoshiConverterFactory
+import javax.inject.Singleton
 
+@Module
+@InstallIn(SingletonComponent::class)
 object NetworkModule {
     private const val BASE_URL = "https://randomuser.me/"
 
-    fun create(): RandomUserApi {
-        val client = OkHttpClient.Builder().build()
-
-        return Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .client(client)
-            .addConverterFactory(GsonConverterFactory.create())
+    @Provides
+    @Singleton
+    fun provideMoshi(): Moshi {
+        return Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
             .build()
-            .create(RandomUserApi::class.java)
     }
 
+    @Provides
+    @Singleton
+    fun provideRetrofit(): Retrofit {
+        return Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(MoshiConverterFactory.create(provideMoshi()))
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideRandomUserApi(retrofit: Retrofit): RandomUserApi {
+        return retrofit.create(RandomUserApi::class.java)
+    }
 }

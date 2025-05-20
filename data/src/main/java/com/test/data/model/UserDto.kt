@@ -1,7 +1,9 @@
 package com.test.data.model
 
+import com.squareup.moshi.JsonClass
 import com.test.domain.User
 
+@JsonClass(generateAdapter = true)
 data class UserDto(
     val name: NameDto,
     val email: String,
