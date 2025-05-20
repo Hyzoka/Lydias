@@ -17,13 +17,7 @@ class ContactRepositoryImpl @Inject constructor(
     private val randomUserApi: RandomUserApi
 ) : ContactRepository {
 
-    override suspend fun fetchContactsPage(page: Int): Result<List<User>> = runCatching {
-        withContext(Dispatchers.IO) {
-            randomUserApi.fetchContacts(page = page)?.results?.map { it.toUser() }
-                ?: error("Contact list cannot be retrieved on this page : $page")
-        }
-    }
-
+    // create dao
     override fun getPaginatedContacts(): Flow<PagingData<User>> {
         return Pager(
             config = PagingConfig(pageSize = 20),

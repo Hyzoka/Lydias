@@ -11,9 +11,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.navigation.compose.rememberNavController
-import com.test.core.DestinationRoute
 import com.test.lydias.ui.theme.LydiasTheme
 import com.test.navigation.AppNavGraph
+import com.test.navigation.DestinationRoute
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

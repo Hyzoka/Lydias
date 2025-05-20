@@ -1,4 +1,4 @@
-package com.test.core
+package com.test.navigation
 
 
 object DestinationRoute {
