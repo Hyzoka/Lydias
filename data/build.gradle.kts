@@ -59,6 +59,10 @@ dependencies {
     implementation(libs.moshi.kotlin)
     kapt(libs.moshi.kapt)
 
+    //Pagine
+    implementation(libs.pagine.runtime)
+    implementation(libs.pagine.compose)
+
     //coroutine
     implementation(libs.coroutine)
     implementation(libs.coroutine.core)

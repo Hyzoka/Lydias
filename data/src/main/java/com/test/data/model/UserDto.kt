@@ -1,7 +1,7 @@
 package com.test.data.model
 
 import com.squareup.moshi.JsonClass
-import com.test.domain.User
+import com.test.domain.model.User
 
 @JsonClass(generateAdapter = true)
 data class UserDto(

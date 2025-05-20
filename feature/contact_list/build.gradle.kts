@@ -66,6 +66,10 @@ dependencies {
     implementation(libs.androidx.navigation.runtime.android)
     implementation(libs.androidx.navigation.compose)
 
+    //Pagine
+    implementation(libs.pagine.runtime)
+    implementation(libs.pagine.compose)
+
     //coroutine
     implementation(libs.coroutine)
 }

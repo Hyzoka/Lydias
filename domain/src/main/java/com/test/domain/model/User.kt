@@ -1,4 +1,4 @@
-package com.test.domain
+package com.test.domain.model
 
 data class User(
     val fullName: String,

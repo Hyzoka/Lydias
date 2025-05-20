@@ -34,6 +34,8 @@ glide = "1.0.0-beta01"
 #Lottie
 lottie = "6.0.0"
 
+#Paggination
+pagine = "3.3.6"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -80,6 +82,10 @@ glide = { group = "com.github.bumptech.glide", name = "compose", version.ref = "
 
 #Lottie
 lottie = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie" }
+
+#Pagine
+pagine-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "pagine" }
+pagine-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "pagine" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
