@@ -1,4 +1,4 @@
-package com.test.data.model
+package com.test.data.model.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass

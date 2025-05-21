@@ -1,6 +1,6 @@
 package com.test.data.remote
 
-import com.test.data.model.ContactResponseDto
+import com.test.data.model.dto.ContactResponseDto
 import retrofit2.http.GET
 import retrofit2.http.Query
 

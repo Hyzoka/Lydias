@@ -9,7 +9,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class ContactListViewModel @Inject constructor(
-    private val repository: ContactRepository,
+    repository: ContactRepository,
 ) : ViewModel() {
 
     val contactPagingFlow = repository.getPaginatedContacts().cachedIn(viewModelScope)

@@ -1,28 +1,37 @@
 package com.test.data.repo
 
+import androidx.paging.ExperimentalPagingApi
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.test.data.ContactPagingSource
-import com.test.data.model.toUser
+import androidx.paging.map
+import com.test.data.local.AppDatabase
+import com.test.data.mediator.ContactRemoteMediator
+import com.test.data.model.entity.toUser
 import com.test.data.remote.RandomUserApi
 import com.test.domain.model.User
 import com.test.domain.repo.ContactRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 class ContactRepositoryImpl @Inject constructor(
-    private val randomUserApi: RandomUserApi
+    private val db: AppDatabase,
+    private val api: RandomUserApi,
+    //private val networkMonitor: NetworkConnectivityHelper
 ) : ContactRepository {
 
-    // create dao
+
+    @OptIn(ExperimentalPagingApi::class)
     override fun getPaginatedContacts(): Flow<PagingData<User>> {
+        val pagingSourceFactory = { db.userDao().getUsersPaging() }
         return Pager(
             config = PagingConfig(pageSize = 20),
-            pagingSourceFactory = { ContactPagingSource(randomUserApi) }
-        ).flow
+            remoteMediator = ContactRemoteMediator(db, api, true),
+            pagingSourceFactory = pagingSourceFactory
+        ).flow.map { pagingData ->
+            pagingData.map { it.toUser() }
+        }
     }
 
 }

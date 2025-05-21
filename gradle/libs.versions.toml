@@ -37,6 +37,13 @@ lottie = "6.0.0"
 #Paggination
 pagine = "3.3.6"
 
+#Room
+room = "2.6.1"
+foundationLayoutAndroid = "1.6.6"
+playServicesAnalyticsImpl = "18.2.0"
+
+uiGraphicsAndroid = "1.7.8"
+
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -86,6 +93,14 @@ lottie = { group = "com.airbnb.android", name = "lottie-compose", version.ref = 
 #Pagine
 pagine-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "pagine" }
 pagine-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "pagine" }
+
+# Room
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room" }
+androidx-foundation-layout-android = { group = "androidx.compose.foundation", name = "foundation-layout-android", version.ref = "foundationLayoutAndroid" }
+play-services-analytics-impl = { group = "com.google.android.gms", name = "play-services-analytics-impl", version.ref = "playServicesAnalyticsImpl" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

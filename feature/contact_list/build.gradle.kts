@@ -75,7 +75,7 @@ dependencies {
     implementation(libs.coroutine)
 
     //coil
-    implementation(libs.coil)
+    //implementation(libs.coil)
 
     //lottie
     implementation(libs.lottie)

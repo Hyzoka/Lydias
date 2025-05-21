@@ -1,7 +1,8 @@
-package com.test.data.model
+package com.test.data.model.dto
 
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
+import com.test.data.model.entity.UserEntity
 import com.test.domain.model.User
 
 @JsonClass(generateAdapter = true)
@@ -28,4 +29,17 @@ fun UserDto.toUser() = User(
     age = dob.age,
     location = "${location.city}, ${location.country}",
     nationality = nationality
+)
+
+fun UserDto.toEntity() = UserEntity(
+    email = email,
+    phone = phone,
+    cell = cell,
+    pictureUrl = picture.large,
+    fullName = "${name.first} ${name.last}",
+    city = location.city,
+    country = location.country,
+    birthDate = dob.date,
+    age = dob.age,
+    nationality = nationality,
 )

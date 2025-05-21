@@ -48,7 +48,6 @@ dependencies {
     //hilt
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
-    implementation(libs.hilt.compose.navigation)
 
     //retrofit
     implementation(libs.retrofit)
@@ -66,4 +65,10 @@ dependencies {
     //coroutine
     implementation(libs.coroutine)
     implementation(libs.coroutine.core)
+
+    //room
+    kapt(libs.room.compiler)
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    implementation(libs.room.paging)
 }
