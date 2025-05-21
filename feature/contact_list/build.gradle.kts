@@ -2,8 +2,9 @@ plugins {
     alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
-    id("org.jetbrains.kotlin.kapt")
     alias(libs.plugins.hilt.android)
+    id("org.jetbrains.kotlin.kapt")
+
 }
 
 android {
@@ -72,4 +73,11 @@ dependencies {
 
     //coroutine
     implementation(libs.coroutine)
+
+    //coil
+    implementation(libs.coil)
+
+    //lottie
+    implementation(libs.lottie)
+
 }
