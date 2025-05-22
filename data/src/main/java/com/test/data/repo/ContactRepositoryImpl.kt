@@ -9,6 +9,7 @@ import com.test.data.local.AppDatabase
 import com.test.data.mediator.ContactRemoteMediator
 import com.test.data.model.entity.toUser
 import com.test.data.remote.RandomUserApi
+import com.test.data.util.NetworkConnectivityHelper
 import com.test.domain.model.User
 import com.test.domain.repo.ContactRepository
 import kotlinx.coroutines.flow.Flow
@@ -18,7 +19,7 @@ import javax.inject.Inject
 class ContactRepositoryImpl @Inject constructor(
     private val db: AppDatabase,
     private val api: RandomUserApi,
-    //private val networkMonitor: NetworkConnectivityHelper
+    private val networkMonitor: NetworkConnectivityHelper
 ) : ContactRepository {
 
 
@@ -27,7 +28,7 @@ class ContactRepositoryImpl @Inject constructor(
         val pagingSourceFactory = { db.userDao().getUsersPaging() }
         return Pager(
             config = PagingConfig(pageSize = 20),
-            remoteMediator = ContactRemoteMediator(db, api, true),
+            remoteMediator = ContactRemoteMediator(db, api, networkMonitor.isConnected.value),
             pagingSourceFactory = pagingSourceFactory
         ).flow.map { pagingData ->
             pagingData.map { it.toUser() }

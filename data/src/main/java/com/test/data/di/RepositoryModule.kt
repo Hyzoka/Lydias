@@ -1,6 +1,8 @@
 package com.test.data.di
 
 import com.test.data.repo.ContactRepositoryImpl
+import com.test.data.util.DefaultNetworkConnectivityHelper
+import com.test.data.util.NetworkConnectivityHelper
 import com.test.domain.repo.ContactRepository
 import dagger.Binds
 import dagger.Module
@@ -16,5 +18,11 @@ abstract class RepositoryModule {
     abstract fun bindContactRepository(
         impl: ContactRepositoryImpl
     ): ContactRepository
+
+    @Binds
+    @Singleton
+    abstract fun bindNetworkConnectivityHelper(
+        impl: DefaultNetworkConnectivityHelper
+    ): NetworkConnectivityHelper
 
 }
