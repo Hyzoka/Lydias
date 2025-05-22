@@ -44,6 +44,7 @@ android {
 dependencies {
     implementation(project(":navigation"))
     implementation(project(":data"))
+    implementation(project(":component"))
 
     //default
     implementation(libs.androidx.core.ktx)

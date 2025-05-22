@@ -1,6 +1,5 @@
 package com.test.contact_list.screen
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,6 +22,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
+import com.test.component.UserItem
 import com.test.domain.model.User
 
 @Composable
@@ -38,7 +38,11 @@ fun ContactListScreen(
         items(contactItems.itemCount) { index ->
             val contact = contactItems[index]
             contact?.let {
-                ContactItem(user = it, onClick = { onContactClick(it) })
+                UserItem(
+                    avatar = it.pictureUrl,
+                    name = it.fullName,
+                    email = it.email,
+                    onClick = { onContactClick(it) })
             }
         }
 
@@ -80,80 +84,6 @@ fun ContactListScreen(
         }
     }
 }
-
-
-@Composable
-fun ContactItem(user: User, onClick: () -> Unit) {
-    Column(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clickable { onClick() }
-            .padding(16.dp)
-    ) {
-        Text(text = user.fullName, style = MaterialTheme.typography.titleMedium)
-        Text(text = user.email, style = MaterialTheme.typography.bodySmall)
-    }
-}
-
-//@Composable
-//fun EmployeeItem(user: User, onClick: () -> Unit) {
-//  Card(
-//      modifier = Modifier
-//          .padding(bottom = 5.dp, top = 5.dp,
-//              start = 5.dp, end = 5.dp)
-//          .fillMaxWidth()
-//          .clickable(onClick = onClick),
-//      shape = RoundedCornerShape(15.dp),
-//  ) {
-//      Row(
-//          modifier = Modifier
-//              .clip(RoundedCornerShape(4.dp))
-//              .background(MaterialTheme.colorScheme.surface)
-//      ) {
-//          Surface(
-//              modifier = Modifier.size(130.dp),
-//              shape = RoundedCornerShape(12.dp),
-//              color = MaterialTheme.colorScheme.surface.copy(
-//                  alpha = 0.2f)
-//          ) {
-//              val image = rememberCoilPainter(
-//                  request = user.pictureUrl,
-//                  fadeIn = true)
-//              Image(
-//                  painter = image,
-//                  contentDescription = null,
-//                  modifier = Modifier
-//                      .height(100.dp)
-//                      .clip(shape = RoundedCornerShape(12.dp)),
-//                  contentScale = ContentScale.Crop
-//              )
-//          }
-//          Column(
-//              modifier = Modifier
-//                  .padding(start = 12.dp)
-//                  .align(Alignment.CenterVertically)
-//          ) {
-//              Text(
-//                  text = user.first_name,
-//                  fontWeight = FontWeight.Bold,
-//                  style = TextStyle(fontSize = 22.sp),
-//                  color = Color.Black
-//              )
-//              CompositionLocalProvider(
-//                  LocalContentAlpha provides ContentAlpha.medium
-//              ) {
-//                  Text(
-//                      text = user.email,
-//                      style = MaterialTheme.typography.bodyMedium,
-//                      maxLines = 1,
-//                      overflow = TextOverflow.Ellipsis,
-//                      modifier = Modifier.padding(end = 25.dp)
-//                  )
-//              }
-//          }
-//      }
-//  }
-//}
 
 @Composable
 fun LoadingItem(text: String) {

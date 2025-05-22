@@ -9,6 +9,36 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.platform.LocalContext
+import com.test.component.color.errorColor
+import com.test.component.color.errorColorDark
+import com.test.component.color.errorContainerColor
+import com.test.component.color.errorContainerColorDark
+import com.test.component.color.onErrorColor
+import com.test.component.color.onErrorColorDark
+import com.test.component.color.onErrorContainerColor
+import com.test.component.color.onErrorContainerColorDark
+import com.test.component.color.onPrimaryContainerColor
+import com.test.component.color.onPrimaryContainerColorDark
+import com.test.component.color.onSecondaryContainerColor
+import com.test.component.color.onSecondaryContainerColorDark
+import com.test.component.color.onSurfaceColor
+import com.test.component.color.onSurfaceColorDark
+import com.test.component.color.onTertiaryContainerColor
+import com.test.component.color.onTertiaryContainerColorDark
+import com.test.component.color.primaryColor
+import com.test.component.color.primaryColorDark
+import com.test.component.color.primaryContainerColor
+import com.test.component.color.primaryContainerColorDark
+import com.test.component.color.secondaryColor
+import com.test.component.color.secondaryColorDark
+import com.test.component.color.secondaryContainerColor
+import com.test.component.color.secondaryContainerColorDark
+import com.test.component.color.surfaceColor
+import com.test.component.color.surfaceColorDark
+import com.test.component.color.tertiaryColor
+import com.test.component.color.tertiaryColorDark
+import com.test.component.color.tertiaryContainerColor
+import com.test.component.color.tertiaryContainerColorDark
 
 private val DarkColorScheme = darkColorScheme(
     primary = primaryColorDark,
@@ -23,7 +53,9 @@ private val DarkColorScheme = darkColorScheme(
     error = errorColorDark,
     onError = onErrorColorDark,
     errorContainer = errorContainerColorDark,
-    onErrorContainer = onErrorContainerColorDark
+    onErrorContainer = onErrorContainerColorDark,
+    surface = surfaceColorDark,
+    onSurface = onSurfaceColorDark
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -39,7 +71,9 @@ private val LightColorScheme = lightColorScheme(
     error = errorColor,
     onError = onErrorColor,
     errorContainer = errorContainerColor,
-    onErrorContainer = onErrorContainerColor
+    onErrorContainer = onErrorContainerColor,
+    surface = surfaceColor,
+    onSurface = onSurfaceColor
 )
 
 @Composable
