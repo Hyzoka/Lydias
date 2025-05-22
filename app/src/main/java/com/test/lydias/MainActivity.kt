@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
                 Scaffold { padding ->
                     AppNavGraph(
                         navController = navController,
-                        startDestination = DestinationRoute.CONTACT_LIST_SCREEN,
+                        startDestination = DestinationRoute.ContactList.route,
                         modifier = Modifier.padding(padding)
                     )
                 }

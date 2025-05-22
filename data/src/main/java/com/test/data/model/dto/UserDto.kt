@@ -19,7 +19,6 @@ data class UserDto(
 )
 
 fun UserDto.toUser() = User(
-    uuid = login.uuid,
     fullName = "${name.first} ${name.last}",
     email = email,
     phone = phone,

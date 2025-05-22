@@ -35,4 +35,9 @@ class ContactRepositoryImpl @Inject constructor(
         }
     }
 
+    override fun getUserByEmail(email: String): Flow<User> {
+        return db.userDao().getUserByEmail(email).map { it.toUser() }
+    }
+
+
 }

@@ -2,7 +2,6 @@ package com.test.domain.model
 
 
 data class User(
-    val uuid: String,
     val fullName: String,
     val email: String,
     val phone: String,

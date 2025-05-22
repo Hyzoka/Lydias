@@ -13,14 +13,14 @@ data class UserEntity(
     val fullName: String,
     val city: String,
     val country: String,
-    val birthDate: String, // Format ISO 8601
+    val birthDate: String,
     val age: Int,
     val nationality: String,
 )
 
 fun UserEntity.toUser(): User {
+    println("toUser: fullName=$fullName, email=$email, phone=$phone, cell=$cell, pictureUrl=$pictureUrl, birthDate=$birthDate, age=$age, city=$city, country=$country")
     return User(
-        uuid = email,
         fullName = fullName,
         email = email,
         phone = phone,

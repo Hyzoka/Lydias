@@ -6,5 +6,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface ContactRepository {
     fun getPaginatedContacts(): Flow<PagingData<User>>
+    fun getUserByEmail(email: String): Flow<User>
 
 }

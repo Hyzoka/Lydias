@@ -41,6 +41,7 @@ android {
 
 dependencies {
     implementation(project(":feature:contact_list"))
+    implementation(project(":feature:contact_details"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
@@ -53,4 +54,8 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.compiler)
     implementation(libs.hilt.compose.navigation)
+
+    //navigation
+    implementation(libs.androidx.navigation.runtime.android)
+    implementation(libs.androidx.navigation.compose)
 }

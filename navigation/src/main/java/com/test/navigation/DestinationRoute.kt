@@ -1,12 +1,17 @@
 package com.test.navigation
 
+import android.net.Uri
 
-object DestinationRoute {
-    const val CONTACT_LIST_SCREEN = "contact_list_screen_route"
-    const val CONTACT_DETAILS_SCREEN = "contact_details_screen_route"
+sealed class DestinationRoute(val route: String) {
+    object ContactList : DestinationRoute("contact_list_screen_route")
 
-
-    object PassedKey {
-        const val CONTACT_VALUE = "contact_value"
+    object ContactDetails : DestinationRoute("contactDetails/{email}") {
+        fun withEmail(email: String): String = "contactDetails/${Uri.encode(email)}"
     }
 }
+
+object PassedKey {
+    const val EMAIL_VALUE = "email"
+}
+
+

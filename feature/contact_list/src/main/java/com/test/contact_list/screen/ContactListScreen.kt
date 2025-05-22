@@ -23,12 +23,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.test.component.UserItem
-import com.test.domain.model.User
 
 @Composable
 fun ContactListScreen(
     viewModel: ContactListViewModel = hiltViewModel(),
-    onContactClick: (User) -> Unit = {}
+    onContactClick: (String) -> Unit = {}
 ) {
     val contactItems = viewModel.contactPagingFlow.collectAsLazyPagingItems()
 
@@ -42,7 +41,7 @@ fun ContactListScreen(
                     avatar = it.pictureUrl,
                     name = it.fullName,
                     email = it.email,
-                    onClick = { onContactClick(it) })
+                    onClick = { onContactClick(it.email) })
             }
         }
 

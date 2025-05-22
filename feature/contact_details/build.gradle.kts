@@ -4,11 +4,10 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     alias(libs.plugins.hilt.android)
     id("org.jetbrains.kotlin.kapt")
-
 }
 
 android {
-    namespace = "com.test.contact_list"
+    namespace = "com.test.contact_details"
     compileSdk = 35
 
     defaultConfig {
@@ -40,6 +39,7 @@ android {
 }
 
 dependencies {
+
     implementation(project(":domain"))
     implementation(project(":component"))
 
@@ -63,14 +63,5 @@ dependencies {
     kapt(libs.hilt.compiler)
     implementation(libs.hilt.compose.navigation)
 
-    //Pagine
-    implementation(libs.pagine.runtime)
-    implementation(libs.pagine.compose)
-
-    //coroutine
-    implementation(libs.coroutine)
-
-    //lottie
-    implementation(libs.lottie)
 
 }
