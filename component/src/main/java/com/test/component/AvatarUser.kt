@@ -19,10 +19,11 @@ import coil.request.ImageRequest
 @Composable
 fun AvatarUser(
     avatar: String,
-    name: String
+    name: String,
+    modifier: Modifier = Modifier
 ) {
     Surface(
-        modifier = Modifier
+        modifier = modifier
             .size(130.dp)
             .padding(16.dp),
         shape = RoundedCornerShape(12.dp),

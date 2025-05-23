@@ -4,11 +4,13 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.test.component.ErrorItem
 import com.test.component.LoadingItem
+import com.test.component.R
 import com.test.component.UserItem
 
 @Composable
@@ -36,13 +38,13 @@ fun ContactListScreen(
             when {
                 loadState.refresh is LoadState.Loading -> {
                     item {
-                        LoadingItem(text = "Chargement des contacts...")
+                        LoadingItem(text = stringResource(id = R.string.loading_contacts))
                     }
                 }
 
                 loadState.append is LoadState.Loading -> {
                     item {
-                        LoadingItem(text = "Chargement de plus de contacts...")
+                        LoadingItem(text = stringResource(id = R.string.loading_more_contacts))
                     }
                 }
 
@@ -50,7 +52,8 @@ fun ContactListScreen(
                     val error = loadState.refresh as LoadState.Error
                     item {
                         ErrorItem(
-                            message = error.error.localizedMessage ?: "Erreur inconnue",
+                            message = error.error.localizedMessage
+                                ?: stringResource(id = R.string.unknown_error),
                             onRetry = { retry() }
                         )
                     }
@@ -61,7 +64,7 @@ fun ContactListScreen(
                     item {
                         ErrorItem(
                             message = error.error.localizedMessage
-                                ?: "Erreur lors de la pagination",
+                                ?: stringResource(id = R.string.pagination_error),
                             onRetry = { retry() }
                         )
                     }
@@ -70,5 +73,6 @@ fun ContactListScreen(
         }
     }
 }
+
 
 

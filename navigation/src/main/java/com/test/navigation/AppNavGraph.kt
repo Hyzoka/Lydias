@@ -44,8 +44,9 @@ fun AppNavGraph(navController: NavHostController, startDestination: String, modi
             }
         ) { backStackEntry ->
             val email = backStackEntry.arguments?.getString(EMAIL_VALUE) ?: ""
-            ContactDetailsScreen(email = email)
+            ContactDetailsScreen(email = email, onBackPress = {
+                navController.popBackStack()
+            })
         }
-
     }
 }

@@ -19,7 +19,6 @@ data class UserEntity(
 )
 
 fun UserEntity.toUser(): User {
-    println("toUser: fullName=$fullName, email=$email, phone=$phone, cell=$cell, pictureUrl=$pictureUrl, birthDate=$birthDate, age=$age, city=$city, country=$country")
     return User(
         fullName = fullName,
         email = email,

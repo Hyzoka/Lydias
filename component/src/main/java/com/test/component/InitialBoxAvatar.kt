@@ -6,6 +6,7 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
@@ -19,7 +20,7 @@ fun InitialCircleAvatar(
     modifier: Modifier = Modifier,
     textColor: Color = Color.White
 ) {
-    val initials = remember(fullName) {
+    val initials = rememberSaveable(fullName) {
         fullName.split(" ")
             .filter { it.isNotBlank() }
             .mapNotNull { it.firstOrNull()?.uppercase() }

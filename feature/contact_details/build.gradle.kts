@@ -63,5 +63,9 @@ dependencies {
     kapt(libs.hilt.compiler)
     implementation(libs.hilt.compose.navigation)
 
+    //google maps
+    implementation(libs.google.compose.maps)
+    implementation(libs.google.gms.maps)
+
 
 }
