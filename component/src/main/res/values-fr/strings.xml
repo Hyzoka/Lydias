@@ -4,4 +4,6 @@
     <string name="loading_more_contacts">Chargement de plus de contacts...</string>
     <string name="unknown_error">Erreur inconnue</string>
     <string name="pagination_error">Erreur lors de la pagination</string>
+    <string name="age_format">%d ans</string>
+
 </resources>
