@@ -5,6 +5,7 @@ import android.content.Context
 import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
+import com.test.domain.NetworkConnectivityHelper
 import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.CoroutineName
 import kotlinx.coroutines.CoroutineScope
@@ -18,9 +19,6 @@ import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.stateIn
 import javax.inject.Inject
 
-interface NetworkConnectivityHelper {
-    val isConnected: StateFlow<Boolean>
-}
 
 @SuppressLint("MissingPermission")
 class DefaultNetworkConnectivityHelper @Inject constructor(

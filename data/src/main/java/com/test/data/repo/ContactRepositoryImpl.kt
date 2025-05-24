@@ -9,7 +9,7 @@ import com.test.data.local.AppDatabase
 import com.test.data.mediator.ContactRemoteMediator
 import com.test.data.model.entity.toUser
 import com.test.data.remote.RandomUserApi
-import com.test.data.util.NetworkConnectivityHelper
+import com.test.domain.NetworkConnectivityHelper
 import com.test.domain.model.User
 import com.test.domain.repo.ContactRepository
 import kotlinx.coroutines.flow.Flow

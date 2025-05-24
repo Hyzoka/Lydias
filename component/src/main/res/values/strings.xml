@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="loading_contacts">Loading contacts...</string>
-    <string name="loading_more_contacts">Loading more contacts...</string>
+    <string name="loading_contacts">Loading contacts…</string>
+    <string name="loading_more_contacts">Loading more contacts…</string>
     <string name="unknown_error">Unknown error</string>
     <string name="pagination_error">Error during pagination</string>
     <string name="age_format">%d years old</string>
     <string name="retry">Retry</string>
+    <string name="your_offline">Your offline</string>
 
 </resources>
