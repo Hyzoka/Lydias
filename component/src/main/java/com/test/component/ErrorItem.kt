@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 
 @Composable
@@ -24,7 +25,7 @@ fun ErrorItem(message: String, onRetry: () -> Unit) {
         Text(text = message, color = MaterialTheme.colorScheme.error)
         Spacer(Modifier.height(8.dp))
         Button(onClick = onRetry) {
-            Text("Réessayer")
+            Text(stringResource(R.string.retry))
         }
     }
 }

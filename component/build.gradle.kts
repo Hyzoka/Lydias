@@ -56,4 +56,9 @@ dependencies {
 
     //coil
     implementation(libs.coil)
+
+    //google maps
+    implementation(libs.google.compose.maps)
+    implementation(libs.google.gms.maps)
+
 }

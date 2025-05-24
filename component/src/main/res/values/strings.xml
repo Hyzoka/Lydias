@@ -5,5 +5,6 @@
     <string name="unknown_error">Unknown error</string>
     <string name="pagination_error">Error during pagination</string>
     <string name="age_format">%d years old</string>
+    <string name="retry">Retry</string>
 
 </resources>

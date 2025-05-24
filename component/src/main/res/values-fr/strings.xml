@@ -5,5 +5,5 @@
     <string name="unknown_error">Erreur inconnue</string>
     <string name="pagination_error">Erreur lors de la pagination</string>
     <string name="age_format">%d ans</string>
-
+    <string name="retry">Réessayer</string>
 </resources>

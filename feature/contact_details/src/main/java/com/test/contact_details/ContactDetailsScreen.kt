@@ -4,14 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.location.Geocoder
-import androidx.compose.animation.core.RepeatMode
-import androidx.compose.animation.core.animateFloat
-import androidx.compose.animation.core.infiniteRepeatable
-import androidx.compose.animation.core.rememberInfiniteTransition
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -25,7 +19,6 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.rememberLazyListState
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.LocationOn
@@ -43,7 +36,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
@@ -55,13 +47,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.model.LatLng
-import com.google.maps.android.compose.Circle
 import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapUiSettings
-import com.google.maps.android.compose.MarkerComposable
-import com.google.maps.android.compose.MarkerState
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.test.component.AvatarUser
+import com.test.component.PulseComponentAnimation
 import com.test.component.RoundedCornerShapeRow
 import java.io.IOException
 import java.util.Locale
@@ -234,56 +224,6 @@ fun ContactDetailsScreen(
                     .size(avatarSize)
             )
         }
-    }
-}
-
-
-@Composable
-fun PulseComponentAnimation(
-    maxPulseSize: Float = 150f,
-    minPulseSize: Float = 0f,
-    latLng: LatLng
-) {
-    val infiniteTransition = rememberInfiniteTransition(label = "PulseComponentAnimation")
-
-    val radius by infiniteTransition.animateFloat(
-        initialValue = minPulseSize,
-        targetValue = maxPulseSize,
-        animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 3000),
-            repeatMode = RepeatMode.Restart
-        ), label = "radius"
-    )
-
-    val alpha by infiniteTransition.animateFloat(
-        initialValue = 1f,
-        targetValue = 0f,
-        animationSpec = infiniteRepeatable(
-            animation = tween(durationMillis = 3000),
-            repeatMode = RepeatMode.Restart
-        ), label = "alpha"
-    )
-
-    // CERCLE pulsant (centré)
-    Circle(
-        center = latLng,
-        clickable = false,
-        fillColor = Color(0xff2FAA59).copy(alpha = alpha),
-        radius = radius.toDouble(), // en mètres
-        strokeColor = Color.Transparent,
-        strokeWidth = 0f
-    )
-
-    // MARQUEUR au même LatLng
-    MarkerComposable(
-        state = MarkerState(position = latLng)
-    ) {
-        Box(
-            modifier = Modifier
-                .size(18.dp)
-                .background(color = Color(0xff2FAA59), shape = CircleShape)
-                .border(width = 2.dp, color = Color.White, shape = CircleShape)
-        )
     }
 }
 

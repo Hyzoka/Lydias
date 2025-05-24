@@ -39,12 +39,17 @@ pagine = "3.3.6"
 
 #Room
 room = "2.6.1"
-foundationLayoutAndroid = "1.6.6"
-playServicesAnalyticsImpl = "18.2.0"
 
 #GoogleMaps
 googleCompose = "4.2.0"
 googleGMS = "18.2.0"
+
+#Mock
+mock = "1.13.10"
+mockito = "5.2.1"
+mockito-core = "5.12.0"
+coreKtxVersion = "1.6.1"
+protoliteWellKnownTypes = "18.0.1"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -81,6 +86,7 @@ moshi-kapt = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", vers
 #Coroutine
 coroutine = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutine" }
 coroutine-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutine" }
+coroutine-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutine" }
 
 #navigation
 androidx-navigation-runtime-android = { group = "androidx.navigation", name = "navigation-runtime-android", version.ref = "navigationRuntimeAndroid" }
@@ -95,17 +101,26 @@ lottie = { group = "com.airbnb.android", name = "lottie-compose", version.ref = 
 #Pagine
 pagine-runtime = { group = "androidx.paging", name = "paging-runtime", version.ref = "pagine" }
 pagine-compose = { group = "androidx.paging", name = "paging-compose", version.ref = "pagine" }
+pagine-common = { group = "androidx.paging", name = "paging-common", version.ref = "pagine" }
 
 # Room
 room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
 room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
 room-paging = { group = "androidx.room", name = "room-paging", version.ref = "room" }
-androidx-foundation-layout-android = { group = "androidx.compose.foundation", name = "foundation-layout-android", version.ref = "foundationLayoutAndroid" }
-play-services-analytics-impl = { group = "com.google.android.gms", name = "play-services-analytics-impl", version.ref = "playServicesAnalyticsImpl" }
+room-testing = { group = "androidx.room", name = "room-testing", version.ref = "room" }
 
+#google maps
 google-compose-maps = { group = "com.google.maps.android", name = "maps-compose", version.ref = "googleCompose" }
 google-gms-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "googleGMS" }
+
+#Mock
+mock = { group = "io.mockk", name = "mockk", version.ref = "mock" }
+mockito = { group = "org.mockito.kotlin", name = "mockito-kotlin", version.ref = "mockito" }
+mockito-core = { group = "org.mockito", name = "mockito-core", version.ref = "mockito-core" }
+core-ktx = { group = "androidx.test", name = "core-ktx", version.ref = "coreKtxVersion" }
+protolite-well-known-types = { group = "com.google.firebase", name = "protolite-well-known-types", version.ref = "protoliteWellKnownTypes" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
