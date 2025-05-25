@@ -25,7 +25,7 @@ fun UserEntity.toUser(): User {
         phone = phone,
         cell = cell,
         pictureUrl = pictureUrl,
-        dob = birthDate,
+        birthday = birthDate,
         age = age,
         location = "$city, $country",
         nationality = nationality

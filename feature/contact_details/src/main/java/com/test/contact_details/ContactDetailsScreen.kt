@@ -1,9 +1,13 @@
 package com.test.contact_details
 
+import android.content.ContentUris
 import android.content.Context
 import android.content.Intent
 import android.content.res.Configuration
 import android.location.Geocoder
+import android.os.Build
+import android.provider.CalendarContract
+import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -51,10 +55,15 @@ import com.google.maps.android.compose.GoogleMap
 import com.google.maps.android.compose.MapUiSettings
 import com.google.maps.android.compose.rememberCameraPositionState
 import com.test.component.AvatarUser
+import com.test.component.InfoActionRow
 import com.test.component.PulseComponentAnimation
 import com.test.component.RoundedCornerShapeRow
 import java.io.IOException
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import java.time.ZoneId
 import java.util.Locale
+import java.util.TimeZone
 
 @Composable
 fun ContactDetailsScreen(
@@ -137,23 +146,15 @@ fun ContactDetailsScreen(
                             style = MaterialTheme.typography.headlineSmall,
                         )
 
-                        RoundedCornerShapeRow(onRowClick = {
-                            val intent = Intent(Intent.ACTION_SENDTO).apply {
-                                data = "mailto:${it.email}".toUri()
-                            }
-                            context.startActivity(intent)
-                        }) {
-                            Icon(
-                                modifier = Modifier.padding(end = 8.dp),
-                                painter = painterResource(com.test.component.R.drawable.outline_alternate_email_24),
-                                contentDescription = "email"
-                            )
-                            Text(
-                                text = it.email,
-                                style = MaterialTheme.typography.bodyMedium,
-                            )
-                        }
-
+                        //email
+                        InfoActionRow(
+                            icon = com.test.component.R.drawable.outline_alternate_email_24,
+                            text = { it.email }, onClick = {
+                                val intent = Intent(Intent.ACTION_SENDTO).apply {
+                                    data = "mailto:${it.email}".toUri()
+                                }
+                                context.startActivity(intent)
+                            })
                         RoundedCornerShapeRow(onRowClick = {
                             val intent = Intent(Intent.ACTION_DIAL).apply {
                                 data = "tel:${it.phone}".toUri()
@@ -188,30 +189,21 @@ fun ContactDetailsScreen(
                             )
                         }
 
-                        RoundedCornerShapeRow {
-                            Icon(
-                                modifier = Modifier.padding(end = 8.dp),
-                                painter = painterResource(com.test.component.R.drawable.cake_icon),
-                                contentDescription = "birthday"
-                            )
+                        //birthday
+                        InfoActionRow(
+                            icon = com.test.component.R.drawable.cake_icon,
+                            text = {
+                                stringResource(
+                                    id = com.test.component.R.string.age_format,
+                                    it.age
+                                )
+                            }, onClick = { openCalendarToDate(context, it.birthday) }
+                        )
 
-                            Text(
-                                stringResource(id = com.test.component.R.string.age_format, it.age),
-                                style = MaterialTheme.typography.bodyMedium,
-                            )
-                        }
-                        RoundedCornerShapeRow {
-                            Icon(
-                                modifier = Modifier.padding(end = 8.dp),
-                                painter = painterResource(com.test.component.R.drawable.material_symbols_icon),
-                                contentDescription = "nationality"
-                            )
-
-                            Text(
-                                text = it.nationality,
-                                style = MaterialTheme.typography.bodyMedium,
-                            )
-                        }
+                        //nationality
+                        InfoActionRow(
+                            icon = com.test.component.R.drawable.material_symbols_icon,
+                            text = { it.nationality })
                     }
                 }
             }
@@ -224,6 +216,41 @@ fun ContactDetailsScreen(
                     .size(avatarSize)
             )
         }
+    }
+}
+
+private fun openCalendarToDate(context: Context, isoDate: String) {
+    try {
+        val millis = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val localDate = LocalDate.parse(isoDate.substring(0, 10))
+            localDate.atStartOfDay(ZoneId.systemDefault()).toInstant().toEpochMilli()
+        } else {
+            val sdf = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+            sdf.timeZone = TimeZone.getTimeZone("UTC")
+            val date = sdf.parse(isoDate.substring(0, 10))!!
+            date.time
+        }
+
+        // Crée l'Intent pour ouvrir le calendrier à la date choisie
+        val uri = ContentUris.withAppendedId(
+            CalendarContract.CONTENT_URI.buildUpon()
+                .appendPath("time")
+                .build(), millis
+        )
+
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            data = uri
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        }
+
+        context.startActivity(intent)
+    } catch (e: Exception) {
+        e.printStackTrace()
+        Toast.makeText(
+            context,
+            context.getString(com.test.component.R.string.calendar_open_failed),
+            Toast.LENGTH_SHORT
+        ).show()
     }
 }
 

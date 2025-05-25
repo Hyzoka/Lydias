@@ -7,5 +7,6 @@
     <string name="age_format">%d years old</string>
     <string name="retry">Retry</string>
     <string name="your_offline">Your offline</string>
+    <string name="calendar_open_failed">Impossible to open the calendar</string>
 
 </resources>
